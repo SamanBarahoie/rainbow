@@ -1,184 +1,179 @@
-Terminal Rainbow Pro 🌈
-Terminal Rainbow Pro is a Bash script that adds vibrant, customizable color effects to your terminal output. With multiple themes, color modes, and animation options, it transforms plain text into a visually stunning display. Perfect for scripting, demos, or just adding some flair to your terminal!
-Features
 
-Themes: Choose from a variety of color schemes like rainbow, neon, cold, fire, ice, pastel, and matrix.
-Color Modes: Apply colors by character (char), word (word), or line (line).
-Animations: Add dynamic effects with pulse (fading in/out) or wave (cycling colors).
-Bold Text: Emphasize your output with bold formatting.
-Output Saving: Save raw input text to a file for later use.
-Pipe Support: Works with piped input (e.g., echo "Hello" | ./rainbow.sh).
-Customizable Delay: Control animation speed with a delay parameter.
+# 🌈 Terminal Rainbow Pro
 
-Installation
+**Terminal Rainbow Pro** is a pure Bash script that adds vibrant, customizable color effects to your terminal output. Whether you're running a script, creating demos, or just want to bring some flair to your shell, this tool makes your terminal output come alive.
 
-Download the Script:
+---
+
+## ✨ Features
+
+- 🎨 **Themes:** Choose from vivid color schemes like `rainbow`, `neon`, `cold`, `fire`, `ice`, `pastel`, and `matrix`.
+- 🧱 **Color Modes:** Apply colors by character, word, or line.
+- 🔁 **Animations:** Add dynamic effects like **pulse** (fades text in/out) or **wave** (color cycling).
+- 💪 **Bold Output:** Make your text stand out with bold formatting.
+- 💾 **Output Saving:** Save raw input text to a file.
+- 📥 **Pipe Support:** Accept input via standard input (`stdin`), perfect for piping.
+- ⏱️ **Customizable Delay:** Fine-tune animation speed with a delay parameter.
+- ⚡ **No Dependencies:** Lightweight and portable. Requires only Bash and a color-capable terminal.
+
+---
+
+## 📦 Installation
+
+```bash
+# Download the script
 curl -O https://raw.githubusercontent.com/your-repo/terminal-rainbow-pro/main/rainbow.sh
 
-
-Make it Executable:
+# Make it executable
 chmod +x rainbow.sh
 
-
-Run it:
+# Run the help command
 ./rainbow.sh -h
+```
 
+---
 
+## 🚀 Usage
 
-No dependencies are required beyond Bash, making it lightweight and portable.
-Usage
+```bash
 ./rainbow.sh [options] [text]
+```
 
-Options
+You can also pipe input:
 
+```bash
+echo "Hello" | ./rainbow.sh -t neon -b
+```
 
+---
 
-Option
-Description
-Example
+## 🔧 Options
 
+| Option        | Description                                                               | Example                        |
+|---------------|---------------------------------------------------------------------------|--------------------------------|
+| `-t THEME`    | Select a color theme: `rainbow`, `neon`, `cold`, `fire`, `ice`, `pastel`, `matrix` | `-t fire`                      |
+| `-m MODE`     | Set color mode: `char`, `word`, `line`                                    | `-m word`                      |
+| `-p`          | Enable **pulse** animation (fades text in/out)                            | `-p`                           |
+| `-w`          | Enable **wave** animation (cycles through theme colors)                   | `-w`                           |
+| `-b`          | Enable **bold** text formatting                                            | `-b`                           |
+| `-o FILE`     | Save raw input (uncolored) to a file                                       | `-o output.txt`                |
+| `-v`          | Show version information                                                   | `-v`                           |
+| `-h`          | Show help message                                                          | `-h`                           |
 
+> ⚠️ Note: `-p` (pulse) and `-w` (wave) **cannot be used together**.
 
--t THEME
-Select a color theme: rainbow, neon, cold, fire, ice, pastel, matrix
--t fire
+---
 
+##  Examples
 
--m MODE
-Color mode: char (per character), word (per word), line (per line)
--m word
+### 🌈 Basic Output
 
-
--p
-Enable pulse animation (fades text in/out)
--p
-
-
--w
-Enable wave animation (cycles colors)
--w
-
-
--b
-Enable bold text
--b
-
-
--o FILE
-Save raw input to a file
--o output.txt
-
-
--v
-Show version
--v
-
-
--h
-Show help
--h
-
-
-Examples
-
-Basic Usage:
+```bash
 ./rainbow.sh "Hello, World!"
+```
 
-Outputs "Hello, World!" in the default rainbow theme, colored by character.
+Prints “Hello, World!” using the default `rainbow` theme, colored by character.
 
-Piped Input with Pastel Theme:
+### 🎨 Piped Input with Style
+
+```bash
 echo "Pretty text" | ./rainbow.sh -t pastel -m word -b
+```
 
-Colors each word in the pastel theme with bold formatting.
+Colors each word in pastel theme with bold formatting.
 
-Wave Animation with Fire Theme:
+### 🔥 Animated Text
+
+```bash
 ./rainbow.sh -t fire -m char -w "Hot stuff 🔥"
+```
 
-Animates "Hot stuff 🔥" with cycling colors in the fire theme.
+Animates the text in a fiery wave of colors.
 
-Save Output to File:
+### 💾 Save Input to File
+
+```bash
 echo "Save me" | ./rainbow.sh -t neon -o raw.txt
+```
 
-Displays "Save me" in the neon theme and saves the raw input to raw.txt.
+Displays colored text and saves the raw (uncolored) version to `raw.txt`.
 
+---
 
-Themes
+## 🎨 Themes
 
+| Theme    | Description             | Colors Used                                      |
+|----------|-------------------------|--------------------------------------------------|
+| rainbow  | Classic rainbow effect  | Red, Yellow, Green, Cyan, Blue, Magenta          |
+| neon     | Bright, punchy hues     | Magenta, Cyan, Yellow                            |
+| cold     | Cool, icy tones         | Blue, Cyan, White                                |
+| fire     | Warm, hot colors        | Red, Bright Red, Yellow, Bright Yellow           |
+| ice      | Pale, frozen shades     | Cyan, Bright Cyan, White                         |
+| pastel   | Soft, subtle tones      | Light Magenta, Light Cyan, Light Yellow, Gray    |
+| matrix   | Hacker-style green rain | Green, Dark Green (faint)                        |
 
+---
 
-Theme
-Description
-Colors
+## 🎞️ Animations
 
+- **Pulse:** Text fades in and out using brightness/dim effects.
+- **Wave:** Theme colors cycle across characters, creating a wave-like motion.
 
+> ⚠️ Pulse and wave are **mutually exclusive**.
 
-rainbow
-Classic rainbow effect
-Red, Yellow, Green, Cyan, Blue, Magenta
+---
 
+## 💻 Requirements
 
-neon
-Bright, vibrant hues
-Magenta, Cyan, Yellow
+- **Bash:** Must be executed using `/bin/bash`.
+- **Terminal Support:** Compatible with most modern terminals supporting ANSI colors.
+- **UTF-8 Encoding:** Recommended for proper rendering of special characters.
 
+---
 
-cold
-Cool tones
-Blue, Cyan, White
+## ⚠️ Limitations
 
+- Animations may not display correctly in non-interactive or limited terminals.
+- Large inputs with animations may cause minor performance lags.
+- Wave/pulse effects rely on ANSI escape sequences and terminal behavior.
 
-fire
-Warm, fiery colors
-Red, Bright Red, Yellow, Bright Yellow
+---
 
+## 🤝 Contributing
 
-ice
-Icy, pale shades
-Cyan, Bright Cyan, White
+Contributions are welcome! 🚀
 
+1. Fork the repo.
+2. Create a feature branch:  
+   `git checkout -b feature/amazing-idea`
+3. Make your changes and commit:  
+   `git commit -m "Add amazing idea"`
+4. Push to your branch:  
+   `git push origin feature/amazing-idea`
+5. Open a pull request! 🎉
 
-pastel
-Soft, muted colors
-Light Magenta, Light Cyan, Light Gray, Light Yellow
+> Please include tests and update this README when you add features.
 
+---
 
-matrix
-Green digital rain vibe
-Green, Dark Green
+## 📜 License
 
+**MIT License** – See [LICENSE](LICENSE) for full terms.
 
-Animations
+---
 
-Pulse: Text fades in and out by toggling between normal and dim text.
-Wave: Colors cycle through the selected theme, creating a wave-like effect.
+## 🧭 Version
 
-Note: Pulse and wave animations cannot be used together.
-Requirements
+Current version: **1.6**
 
-Bash: The script requires a Bash shell (/bin/bash). It checks for this automatically and will exit if run with a different shell.
-Terminal: A terminal that supports ANSI color codes (most modern terminals do).
+Check your version:
 
-Limitations
+```bash
+./rainbow.sh -v
+```
 
-Animations may not display correctly in non-interactive terminals or terminals with limited ANSI support.
-The script assumes a UTF-8 compatible terminal for proper character rendering.
-Large inputs with animations may cause slight performance delays due to terminal rendering.
+---
 
-Contributing
-Contributions are welcome! To contribute:
+> 🌟 Make your terminal shine with **Terminal Rainbow Pro** – because even your scripts deserve style! 🌟
 
-Fork the repository.
-Create a feature branch (git checkout -b feature/new-cool-thing).
-Commit your changes (git commit -m "Add new cool thing").
-Push to the branch (git push origin feature/new-cool-thing).
-Open a pull request.
-
-Please include tests and update this README if you add new features.
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
-
-Version
-Current version: 1.6
-Run ./rainbow.sh -v to check the version.
-
-🌟 Make your terminal shine with Terminal Rainbow Pro! 🌟
+---
